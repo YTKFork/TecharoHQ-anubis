@@ -200,6 +200,22 @@ Then reload your Apache config and load your website. You should see Anubis prot
 sudo systemctl reload httpd.service
 ```
 
+### I'm running on a Red Hat distribution and Apache is saying "service unavailable" for every page load
+
+If you see a "Service unavailable" error on every page load and run a Red Hat derived distribution, you are missing a `selinux` setting. The exact command will be in a log message like this:
+
+```text
+*****  Plugin catchall_boolean (89.3 confidence) suggests   ******************
+
+If you want to allow HTTPD scripts and modules to connect to the network using TCP.
+Then you must tell SELinux about this by enabling the 'httpd_can_network_connect' boolean.
+
+Do
+setsebool -P httpd_can_network_connect 1
+```
+
+This will fix the error immediately.
+
 ## Docker compose
 
 Add Anubis to your compose file pointed at your service:
