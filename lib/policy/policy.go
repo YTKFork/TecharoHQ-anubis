@@ -39,7 +39,7 @@ func NewParsedConfig(orig config.Config) *ParsedConfig {
 func ParseConfig(fin io.Reader, fname string, defaultDifficulty int) (*ParsedConfig, error) {
 	var c config.Config
 	if err := yaml.NewYAMLToJSONDecoder(fin).Decode(&c); err != nil {
-		return nil, fmt.Errorf("can't parse policy config JSON %s: %w", fname, err)
+		return nil, fmt.Errorf("can't parse policy config YAML %s: %w", fname, err)
 	}
 
 	if err := c.Valid(); err != nil {
