@@ -8,6 +8,7 @@ import (
 	"testing"
 
 	"github.com/TecharoHQ/anubis"
+	"github.com/TecharoHQ/anubis/data"
 	"github.com/TecharoHQ/anubis/internal"
 	"github.com/TecharoHQ/anubis/lib/policy"
 )
@@ -56,7 +57,19 @@ func makeChallenge(t *testing.T, ts *httptest.Server) challenge {
 }
 
 func TestLoadPolicies(t *testing.T) {
+	for _, fname := range []string{"botPolicies.json", "botPolicies.yaml"} {
+		t.Run(fname, func(t *testing.T) {
+			fin, err := data.BotPolicies.Open(fname)
+			if err != nil {
+				t.Fatal(err)
+			}
+			defer fin.Close()
 
+			if _, err := policy.ParseConfig(fin, fname, 4); err != nil {
+				t.Fatal(err)
+			}
+		})
+	}
 }
 
 // Regression test for CVE-2025-24369
