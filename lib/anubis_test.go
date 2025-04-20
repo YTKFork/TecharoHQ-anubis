@@ -15,7 +15,7 @@ import (
 func loadPolicies(t *testing.T, fname string) *policy.ParsedConfig {
 	t.Helper()
 
-	anubisPolicy, err := LoadPoliciesOrDefault("", anubis.DefaultDifficulty)
+	anubisPolicy, err := LoadPoliciesOrDefault(fname, anubis.DefaultDifficulty)
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -53,6 +53,10 @@ func makeChallenge(t *testing.T, ts *httptest.Server) challenge {
 	}
 
 	return chall
+}
+
+func TestLoadPolicies(t *testing.T) {
+
 }
 
 // Regression test for CVE-2025-24369
