@@ -24,6 +24,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Move per-environment configuration details into their own pages
 - Added headers support to bot policy rules
 - Moved configuration file from JSON to YAML by default
+- Added documentation on how to use Anubis with Traefik in Docker
 
 ## v1.16.0
 
