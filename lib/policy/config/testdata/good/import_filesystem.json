@@ -1,7 +1,7 @@
 {
   "bots": [
     {
-      "import": "./testdata/hack-test.yaml"
+      "import": "./testdata/hack-test.json"
     }
   ]
 }

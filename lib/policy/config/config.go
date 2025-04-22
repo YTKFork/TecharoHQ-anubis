@@ -26,7 +26,7 @@ var (
 	ErrInvalidCIDR                       = errors.New("config.Bot: invalid CIDR")
 	ErrInvalidImportStatement            = errors.New("config.ImportStatement: invalid source file")
 	ErrCantSetBotAndImportValuesAtOnce   = errors.New("config.BotOrImport: can't set bot rules and import values at the same time")
-	ErrMustSetBotOrImportRules           = errors.New("config.BotOrImport: rule definition is invalid, you must set either bot rules or an import statement")
+	ErrMustSetBotOrImportRules           = errors.New("config.BotOrImport: rule definition is invalid, you must set either bot rules or an import statement, not both")
 )
 
 type Rule string
