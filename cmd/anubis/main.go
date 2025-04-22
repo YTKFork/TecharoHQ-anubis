@@ -27,6 +27,7 @@ import (
 	"time"
 
 	"github.com/TecharoHQ/anubis"
+	"github.com/TecharoHQ/anubis/data"
 	"github.com/TecharoHQ/anubis/internal"
 	libanubis "github.com/TecharoHQ/anubis/lib"
 	botPolicy "github.com/TecharoHQ/anubis/lib/policy"
@@ -181,6 +182,9 @@ func main() {
 	}
 
 	if *extractResources != "" {
+		if err := extractEmbedFS(data.BotPolicies, ".", *extractResources); err != nil {
+			log.Fatal(err)
+		}
 		if err := extractEmbedFS(web.Static, "static", *extractResources); err != nil {
 			log.Fatal(err)
 		}
@@ -343,7 +347,7 @@ func extractEmbedFS(fsys embed.FS, root string, destDir string) error {
 			return err
 		}
 
-		destPath := filepath.Join(destDir, relPath)
+		destPath := filepath.Join(destDir, root, relPath)
 
 		if d.IsDir() {
 			return os.MkdirAll(destPath, 0o700)
