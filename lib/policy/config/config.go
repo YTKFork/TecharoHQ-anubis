@@ -235,7 +235,7 @@ type BotOrImport struct {
 
 func (boi *BotOrImport) Valid() error {
 	if boi.BotConfig != nil && boi.ImportStatement != nil {
-		return errors.New("[unexpected] can't set bot config and import statement")
+		return ErrCantSetBotAndImportValuesAtOnce
 	}
 
 	if boi.BotConfig != nil {
