@@ -4,10 +4,4 @@
     all:
       - '"Accept" in headers'
       - 'headers["Accept"] == "application/json"'
-      - >-
-        (
-          method == "POST" &&
-          "Content-Type" in headers &&
-          headers["Content-Type"] == "application/json"
-        )
       - 'path.startsWith("/api/")'
