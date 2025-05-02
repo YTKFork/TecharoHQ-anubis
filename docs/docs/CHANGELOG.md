@@ -15,6 +15,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fixed native packages not containing the stdlib and botPolicies.yaml
 - Change import syntax to allow multi-level imports
 - Changed the startup logging to use JSON formatting as all the other logs do.
+- Add `--target-insecure-skip-verify` flag/envvar to allow Anubis to hit a self-signed HTTPS backend.
 
 ## v1.17.1: Asahi sas Brutus: Echo 1
 
